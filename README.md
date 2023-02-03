@@ -18,8 +18,21 @@ pip3 install -r requirements.txt
 
 ### Запуск
 
+Запуск с настройками по умолчанию (в качестве параметров соединения будут использоватся файл ```config.connect```, в качестве набора скриптов будет использоватся файл ```config.scripts```)
 ```
-
+pytest --maxfail=1 ./vmInstaller.py
+```
+Запуск с настройками по умолчанию (в качестве параметров соединения будут использоватся файл ```config.connect```, в качестве набора скриптов будет использоватся файл ```config.scripts```) с выводом ```stdin```, ```stdout```, ```stderr``` для каждого теста:
+```
+pytest -s --maxfail=1 ./vmInstaller.py
+```
+Запуск с переопределением файла с набором скриптов:
+```
+pytest --maxfail=1 ./vmInstaller.py --scripts config.scripts
+```
+Запуск с переопределением файла параметров соединения и набора скриптов:
+```
+pytest --maxfail=1 ./vmInstaller.py --connect config.connect --scripts config.scripts
 ```
 
 ### Архитектура проекта
