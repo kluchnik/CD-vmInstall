@@ -8,12 +8,8 @@ $: pytest --maxfail=1 ./vmInstaller.py --connect config.connect --scripts config
 '''
 
 import pytest
-import importlib
 import lib.bash
 import lib.ssh
-
-#import config.connect
-#import config.scripts
 
 def exec_cmd(type_connect:str, cmd:str, ssh_cfg:dict={}) -> dict:
   ''' Выполнеие bash команд в зависимости от типа подключения bash | ssh '''
@@ -35,7 +31,7 @@ def print_result(input_txt:dict) -> None:
     print(input_txt)
 
 def test_exec_cmd(connect:dict, scripts:tuple) -> None:
-  ''' Подключение к ПК и выполнение команд cmd '''
+  ''' Подключение в соответсвии с connect и выполнение scripts '''
   type_connect = connect['type_connect']
   ssh_cfg = connect['ssh_cfg']
   result = exec_cmd(type_connect, scripts, ssh_cfg)

@@ -9,7 +9,6 @@ def pytest_generate_tests(metafunc):
   # if the argument is specified in the list of test "fixturenames".
   option_value = metafunc.config.option.connect
   if 'connect' in metafunc.fixturenames and option_value is not None:
-    #metafunc.parametrize("connect", [option_value])
     m_connect = importlib.import_module(option_value)
     type_connect = m_connect.get_type()
     try:
@@ -24,7 +23,6 @@ def pytest_generate_tests(metafunc):
 
   option_value = metafunc.config.option.scripts
   if 'scripts' in metafunc.fixturenames and option_value is not None:
-    #metafunc.parametrize("scripts", [option_value])
     m_scripts = importlib.import_module(option_value)
     preinstall = m_scripts.get_preinstall()
     install = m_scripts.get_install()

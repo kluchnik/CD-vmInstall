@@ -3,7 +3,7 @@
 '''
 
 # ===========================================================
-# Параметры для формирования списка переменных
+# Параметры для формирования списка скриптов
 # ===========================================================
 
 def get_preinstall() -> tuple:
@@ -199,23 +199,10 @@ VM1 = {
   'net6': 'bridge:none',
 }
 
-VM2 = {
-  'name': 'rubicon-2',
-  'iso': '/tmp/rubicon.iso',
-  'disk': '/home/user/qemu/disk2.qcow2',
-  'com_port': '4002',
-  'net1': 'bridge:none',
-  'net2': 'bridge:vmbr2',
-  'net3': 'bridge:none',
-  'net4': 'bridge:none',
-  'net5': 'bridge:none',
-  'net6': 'bridge:none',
-}
+VMs_install = (VM1, )
 
-VMs = (VM1, VM2)
-
-VMs_name = tuple(map(lambda x: x['name'], VMs))
-VMs_disk = tuple(map(lambda x: x['disk'], VMs))
+VMs_name = tuple(map(lambda x: x['name'], VMs_install))
+VMs_disk = tuple(map(lambda x: x['disk'], VMs_install))
 
 # ===========================================================
 # Остановка виртуальных машин
@@ -309,37 +296,6 @@ if [[ $? -eq 0 ]];
   else echo "Установка виртуальной машины {name} - ERROR" >> /dev/stderr
 fi
 '''.format(pref_cmd, **VM1)
-
-vm_2_install = '''
-echo "Запуск установки виртуальной машины: {name}" 
-{0} virt-install --connect qemu:///system \
-  --name {name} \
-  --hvm \
-  --virt-type kvm \
-  --arch x86_64 \
-  --memory 2048 \
-  --vcpus 1 \
-  --boot menu=on,useserial=on \
-  --os-type linux \
-  --os-variant generic \
-  --disk path={disk},size=10,bus=sata,snapshot=external \
-  --cdrom {iso} \
-  --network {net1},model=e1000,mac=00:50:DA:82:8B:01 \
-  --network {net2},model=e1000,mac=00:50:DA:82:8B:02 \
-  --network {net3},model=e1000,mac=00:50:DA:82:8B:03 \
-  --network {net4},model=e1000,mac=00:50:DA:82:8B:04 \
-  --network {net5},model=e1000,mac=00:50:DA:82:8B:05 \
-  --network {net6},model=e1000,mac=00:50:DA:82:8B:06 \
-  --nographics \
-  --serial tcp,host=0.0.0.0:{com_port},mode=bind,protocol=telnet \
-  --console pty,target_type=serial \
-  --autoconsole none \
-  --autostart
-if [[ $? -eq 0 ]];
-  then echo "Установка виртуальной машины {name} - OK"
-  else echo "Установка виртуальной машины {name} - ERROR" >> /dev/stderr
-fi
-'''.format(pref_cmd, **VM2)
 
 # ===========================================================
 # Ожидание завершения установки виртальной машины
