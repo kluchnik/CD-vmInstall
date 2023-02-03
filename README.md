@@ -13,6 +13,9 @@
 Подключение через ssh:  
 ![img not found](img/work_2.png "Подключение через ssh")  
 
+В файле ```config.scripts``` предусмотрена следующая сетевая конфигурация для подключения ВМ 
+![img not found](img/network.png "Сетевая настройка")  
+
 ### Установка зависимостей
 ```
 apt install python3

@@ -19,7 +19,7 @@ def get_install() -> tuple:
   ''' install - список bash-скриптов установки '''
   return (
     vm_stop, vm_del_snapshots, vm_delete,
-    vm_1_install, vm_2_install,
+    vm_1_install,
     waiting_install
     )
 
