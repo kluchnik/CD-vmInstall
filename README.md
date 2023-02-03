@@ -65,5 +65,5 @@ pytest --maxfail=1 ./vmInstaller.py --connect config.connect --scripts config.sc
 ```
 pytest -s --maxfail=1 ./vmInstaller.py
 ```
-Вывод:
+Вывод:  
 ![img not found](img/std_example.png)
