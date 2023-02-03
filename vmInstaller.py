@@ -1,8 +1,10 @@
 '''
 Сценарий развертывания виртуальных машин
-Запуск: pytest --maxfail=1 ./vmanager.py
-Запуск: pytest -s --maxfail=1 ./vmanager.py
-Запуск: pytest --maxfail=1 ./vmanager.py --connect config.connect --scripts config.scripts
+Запуск:
+$: pytest --maxfail=1 ./vmInstaller.py
+$: pytest -s --maxfail=1 ./vmInstaller.py
+$: pytest --maxfail=1 ./vmInstaller.py --scripts config.scripts
+$: pytest --maxfail=1 ./vmInstaller.py --connect config.connect --scripts config.scripts
 '''
 
 import pytest
