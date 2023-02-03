@@ -3,7 +3,7 @@
 
 ### Описание функционирования
 
-Даннный скрип выполняет следующие действия:  
+Даннная утилита выполняет следующие действия:  
 * Подключается (через bash или ssh) к ОС на базе Linux для выполнение команд, параметры подключения задаются в файле ```config.connect```
 * Выполнение заданного набора скриптов написанных на bash, набор скриптов задается в файле ```config.scripts```
 * Заданные скрипты выполняются последовательно (наборы preinstall, install, postinstall), условием завершения является: оканчание всех скриптов из набора или появление ошибки в ```stderr``` при выполнение скрипта
@@ -21,7 +21,7 @@ apt install python3-pip
 pip3 install -r requirements.txt
 ```
 
-### Запуск
+### Запуск утилиты
 
 Запуск с настройками по умолчанию (в качестве параметров соединения будут использоватся файл ```config.connect```, в качестве набора скриптов будет использоватся файл ```config.scripts```)
 ```
@@ -56,3 +56,14 @@ pytest --maxfail=1 ./vmInstaller.py --connect config.connect --scripts config.sc
 | - | ![img not found](img/config_scripts_3.png) |
 | ![img not found](img/ico_lib_bash.png) | Выполнение команд через bash |
 | ![img not found](img/ico_lib_ssh.png) | Выполнение команд через ssh |
+
+### Пример написание сценария в файле ```config.scripts```
+
+![img not found](img/cmd_example.png)
+
+### Пример работы утилиты
+```
+pytest -s --maxfail=1 ./vmInstaller.py
+```
+Вывод:
+![img not found](img/std_example.png)
