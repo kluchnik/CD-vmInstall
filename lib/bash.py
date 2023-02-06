@@ -6,10 +6,14 @@
 >>> import lib.bash
 
 >>> lib.bash.exec_cmd('echo тест')
-{'stdout': 'тест\\n', 'stderr': ''}
+{'stdin': 'echo тест', 'stdout': 'тест\\n', 'stderr': ''}
 
 >>> lib.bash.exec_cmd('echo тест', False)
-{'stdout': b'\\xd1\\x82\\xd0\\xb5\\xd1\\x81\\xd1\\x82\\n', 'stderr': b''}
+{
+  'stdin': 'echo тест',
+  'stdout': b'\\xd1\\x82\\xd0\\xb5\\xd1\\x81\\xd1\\x82\\n',
+  'stderr': b''
+}
 
 >>> cmd = \'''
 ... whoami
@@ -17,8 +21,11 @@
 ... \'''
 
 >>> lib.bash.exec_cmd(cmd)
-{'stdout': 'user\\n/home/user/CI-QA-rub\\n', 'stderr': ''}
-
+{
+  'stdin': '\\nwhoami\\npwd\\n',
+  'stdout': 'user\\n/home/user/CI-QA-rub\\n',
+  'stderr': ''
+}
 '''
 
 import subprocess
@@ -33,9 +40,17 @@ def exec_cmd(cmd:str, decode:bool=True, fdecode:str='utf8') -> dict:
   except Exception as exc:
     out, err = '', exc
   if decode:
-    result = {'stdout': out.decode(fdecode), 'stderr': err.decode(fdecode)}
+    result = {
+      'stdin': cmd,
+      'stdout': out.decode(fdecode),
+      'stderr': err.decode(fdecode)
+      }
   else:
-    result = {'stdout': out, 'stderr': err}
+    result = {
+      'stdin': cmd,
+      'stdout': out,
+      'stderr': err
+    }
   return result
 
 
