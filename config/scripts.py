@@ -14,7 +14,6 @@ def get_preinstall() -> tuple:
     network_config
     )
 
-# кортеж install - список bash-скриптов установки
 def get_install() -> tuple:
   ''' install - список bash-скриптов установки '''
   return (
