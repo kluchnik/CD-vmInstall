@@ -107,6 +107,7 @@ for item in ${{!URLs[@]}}; do
   parameters=(${{URLs[$item]}})
   url=${{parameters[0]}}
   path=${{parameters[1]}}
+  {0} rm -f ${{path}}
   {0} wget --no-check-certificate --quiet -O ${{path}} ${{url}}
   if [[ $? -eq 0 ]];
     then echo "Скачивание ${{url}} -> ${{path}} - OK"
