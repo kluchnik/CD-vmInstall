@@ -35,6 +35,5 @@ def test_exec_cmd(connect:dict, scripts:tuple) -> None:
   type_connect = connect['type_connect']
   ssh_cfg = connect['ssh_cfg']
   result = exec_cmd(type_connect, scripts, ssh_cfg)
-  result['stdin'] = scripts
   print_result(result)
   assert result['stderr'] == ''
