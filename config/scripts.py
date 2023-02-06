@@ -318,8 +318,8 @@ for vm in {2}; do
 done
 
 # Ожидание установки ВМ машин
-finished=0
 for item in {{1..{1}}}; do
+  finished=0
   for vm in {2}; do
     status_vm=$({0} virsh list --all | grep "${{vm}} " | awk '{{print $3}}')
     if [[ "${{status_vm}}" == "выключен" || "${{status_vm}}" == "shut off" ]]; then
