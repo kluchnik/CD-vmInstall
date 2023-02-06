@@ -48,7 +48,7 @@ pytest --maxfail=1 ./vmInstaller.py --connect config.connect --scripts config.sc
 | Объект | Описание |
 | - | - |
 | ![img not found](img/ico_vmInstall.png) | Скрипт запуска процедуры выполнения скриптов |
-| - | !img not found](img/vmInstall_1.png) |
+| - | ![img not found](img/vmInstall_1.png) |
 | ![img not found](img/ico_conftest.png) | Формирование параметров подключения и наборов скриптов |
 | - | ![img not found](img/conftest_1.png) |
 | ![img not found](img/ico_config_connect.png) | Формирование параметров подключения и наборов скриптов |
