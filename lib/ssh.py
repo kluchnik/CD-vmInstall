@@ -217,7 +217,7 @@ def exec_cmd(cmd:str, ssh_cfg:dict) -> dict:
       'username': 'user',
       'password': '12345678'
     }
-    out: {'stdout': 'user\\n', 'stderr': ''}
+    out: {'stdin': 'whoami', stdout': 'user\\n', 'stderr': ''}
   '''
   pc = UNION()
   if pc.set_connParam(**ssh_cfg):
@@ -225,6 +225,7 @@ def exec_cmd(cmd:str, ssh_cfg:dict) -> dict:
       _ = pc.run_command(cmd)
       _ = pc.disconnect()
   return {
+    'stdin': pc.get_line_std('stdin'),
     'stdout': pc.get_line_std('stdout'),
     'stderr': pc.get_line_std('stderr')
   }
