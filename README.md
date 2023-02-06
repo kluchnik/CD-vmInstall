@@ -70,3 +70,7 @@ pytest -s --maxfail=1 ./vmInstaller.py
 ```
 Вывод:  
 ![img not found](img/std_example.png)
+
+### Пример использования
+
+![img not found](img/app_scheme.png)
